@@ -1,0 +1,22 @@
+<a class="noSubrayado rotate" [routerLink]="['/proyecto',proyecto.title]">
+	<md-card  [ngClass]="proyecto.estado">
+		<md-card-header>
+			<span md-card-avatar [ngSwitch]="proyecto.tipo" class="rota">
+				<md-icon *ngSwitchCase="'operaciones'" title="Operaciones" class=" md-36">bug_report</md-icon>
+				<md-icon *ngSwitchCase="'soluciones'" title="Soluciones" class=" md-36">settings</md-icon>
+			</span>
+			<md-card-title>Frente de atencion</md-card-title>
+			<md-card-subtitle>Nicolas Rameri</md-card-subtitle>
+   		</md-card-header>
+		<md-card-content md-card-image>
+			<h1>{{proyecto.title}}</h1>
+		</md-card-content >
+		<md-card-actions>
+			<i class="material-icons md-36" title="No actualizo esta semana">alarm</i>
+			<i class="material-icons md-36" title="Issue activo">warning</i>
+			<i class="material-icons md-36" title="Riesgos por vencer">add_alert</i>
+			<i class="material-icons md-36" title="Piden Rotacion">cached</i>
+			<i class="material-icons md-36" title="Necesitan Recursos">person_add</i>
+		</md-card-actions>
+	</md-card>
+</a>

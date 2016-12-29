@@ -1,0 +1,13 @@
+<md-grid-list [cols]="colNumber">
+	<md-grid-tile *ngFor="let proy of proys"> 
+		<app-proyectos [proyecto]='proy'  class="rotate" ></app-proyectos>
+	</md-grid-tile>
+</md-grid-list>
+
+<span class="newButton">
+	<button md-fab routerLink="/nuevoProyecto" color="accent" >
+		<md-icon>add</md-icon>
+	</button>
+</span>
+
+<app-menu-filtros (filtrosCambios)="filtrar($event)"></app-menu-filtros>
