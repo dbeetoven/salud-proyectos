@@ -25,16 +25,7 @@ export class WizardPaso3Component implements OnInit {
   }
 
   // Manejo de datePicker del vencimiento de issue
-  openDateIssue() {
-    this.dateIssue = 'show';
-  }
-
-  closeIssue() {
-    this.dateIssue = 'hide';
-  }
-
   setIssueDate(date) {
-    this.dateIssue = 'hide';
     this.dateIssueInput = date.toLocaleString().split(',')[0];
   }
 

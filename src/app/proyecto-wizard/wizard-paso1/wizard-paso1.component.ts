@@ -32,38 +32,13 @@ export class WizardPaso1Component implements OnInit {
     return this.datosBasicos;
   }
 
-  // Manejo de los datePicker TODO: mover la funcionalidad al calendario
-  openDateTo() {
-    this.dateTo = 'show';
-  }
-
-  closeTo() {
-    this.dateTo = 'hide';
-  }
-
-  setFromto(date) {
-    this.dateTo = 'hide';
-  }
+  // Manejo de los datePicker
 
   setToDateValue(date: Date) {
-    this.dateTo = 'hide';
     this.dateToInput = date.toLocaleString().split(',')[0];
   }
 
-  openDateFrom() {
-    this.dateFrom = 'show';
-  }
-
-  closeFrom() {
-    this.dateFrom = 'hide';
-  }
-
-  setFromDate(date) {
-    this.dateFrom = 'hide';
-  }
-
   setFromDateValue(date: Date) {
-    this.dateFrom = 'hide';
     this.dateFromInput = date.toLocaleString().split(',')[0];
   }
 

@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class CalendarioComponent implements OnInit {
 
   private date: Date = new Date();
+  private dateClass:String ="hide"
   private days: Array<Number>;
 
   private days1: Array<Number>;
@@ -88,6 +89,14 @@ export class CalendarioComponent implements OnInit {
     console.log(value);
     console.log(new Date(this.date.getFullYear(), this.date.getMonth(), value));
     this.pick.emit(new Date(this.date.getFullYear(), this.date.getMonth(), value));
+    this.dateClass = 'hide';
+  }
 
+  public open() {
+    this.dateClass = 'show';
+  }
+
+  close() {
+    this.dateClass = 'hide';
   }
 }
