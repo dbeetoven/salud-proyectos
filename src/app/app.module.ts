@@ -27,7 +27,8 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { MultiSelectComponent } from './multi-select/multi-select.component';
 import { WizardPaso1Component } from './proyecto-wizard/wizard-paso1/wizard-paso1.component';
 import { WizardPaso2Component } from './proyecto-wizard/wizard-paso2/wizard-paso2.component';
-import { WizardPaso3Component } from './proyecto-wizard/wizard-paso3/wizard-paso3.component'
+import { WizardPaso3Component } from './proyecto-wizard/wizard-paso3/wizard-paso3.component';
+import { WizardResumenComponent } from './proyecto-wizard/wizard-resumen/wizard-resumen.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { WizardPaso3Component } from './proyecto-wizard/wizard-paso3/wizard-paso
     WizardPaso1Component,
     WizardPaso2Component,
     WizardPaso3Component,
+    WizardResumenComponent,
   ],
   imports: [
     BrowserModule,

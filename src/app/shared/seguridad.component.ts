@@ -27,5 +27,4 @@ export class SeguridadComponent implements OnDestroy {
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
-
 }

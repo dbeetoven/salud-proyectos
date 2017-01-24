@@ -4,38 +4,38 @@
     <md-card-content>
       <p>
         <md-icon>work</md-icon>  
-        <md-input placeholder="Codigo del proyecto" style="width: 30%">
+        <md-input placeholder="Codigo del proyecto" style="width: 30%" [(ngModel)]="projectCode">
           <md-hint style="color:red" align="end">{{mensaje}}</md-hint>
         </md-input>
-        <md-input placeholder="Nombre del proyecto" style="width: 60%"></md-input>
+        <md-input placeholder="Nombre del proyecto" style="width: 60%" [(ngModel)]="projectName">
+        </md-input>
       </p>
 
       <h2>Tipo de Proyecto:</h2> 
       <p>
-        
-        <md-slide-toggle [(ngModel)]="soluciones">
-          <span *ngIf="soluciones">A.D. (Soluciones)</span>
-          <span *ngIf="!soluciones">A.M.S (Operaciones)</span>
+        <md-slide-toggle [(ngModel)]="isSolutionsProject">
+          <span *ngIf="isSolutionsProject">A.D. (Soluciones)</span>
+          <span *ngIf="!isSolutionsProject">A.M.S (Operaciones)</span>
         </md-slide-toggle>
       </p>
 
       <h2>Lider/Referente:</h2>
       <p>
-        <md-slide-toggle [(ngModel)]="usuariotoggle">
-          <span *ngIf="usuariotoggle">Usuario Actual</span>
-          <span *ngIf="!usuariotoggle">Otro Usuario</span>
+        <md-slide-toggle [(ngModel)]="isProjectLeader">
+          <span *ngIf="isProjectLeader">Usuario Actual</span>
+          <span *ngIf="!isProjectLeader">Otro Usuario</span>
         </md-slide-toggle>
       </p>
-      <span *ngIf="!usuariotoggle">
-        
+
+      <span *ngIf="!isProjectLeader">  
         <p>
           <md-icon>person</md-icon>
-          <md-input placeholder="Nombre" style="width: 45%" [(ngModel)]="nombre"></md-input>
-          <md-input placeholder="Apelido" style="width: 45%" [(ngModel)]="apellido"></md-input>
+          <md-input placeholder="Nombre" style="width: 45%" [(ngModel)]="leaderFirstname"></md-input>
+          <md-input placeholder="Apelido" style="width: 45%" [(ngModel)]="leaderSurname"></md-input>
         </p>
         <p>
           <md-icon>email</md-icon>
-          <md-input placeholder="Correo" style="width: 90%" [(ngModel)]="email" type="email"></md-input>
+          <md-input placeholder="Correo" style="width: 90%" type="email" [(ngModel)]="leaderEmail"></md-input>
         </p>
       </span>
     </md-card-content>
