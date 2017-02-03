@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProjectDetail } from '../../model/project-detail';
 
 @Component({
   selector: 'app-wizard-resumen',
@@ -8,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WizardResumenComponent implements OnInit {
 
   @Input() proyectoId;
+  @Input() projectDetail: ProjectDetail;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
+    console.log( this.projectDetail.getDateFrom() );
+    console.log( this.projectDetail.getDateTo() );
   }
 
 }

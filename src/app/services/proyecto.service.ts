@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
-import { Proyecto } from '../model/proyecto';
+import { Project } from '../model/project';
 import { Observable } from 'rxjs/Observable';
 //Se puede separar en otro archivos !
 import 'rxjs/add/operator/map';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ProyectoService {
 
+  //Sacar URLs a archivo properties, o algo así !!!!!
   private backendUrl = 'http://localhost:3000';
   private saveEndpoint = this.backendUrl + '/proyecto/save';
   private getAllEndpoint = this.backendUrl + '/proyecto/getAll';
@@ -18,7 +19,7 @@ export class ProyectoService {
 
   constructor(private http:Http) { };
 
-  create(proyecto: Proyecto): Observable<Proyecto> {
+  create(proyecto: Project): Observable<Project> {
   		console.log(' *** ProyectoService.create() *** ');
 
       let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -30,13 +31,14 @@ export class ProyectoService {
           this.http.post(this.saveEndpoint, body, options)
               .map((res: Response) => res.json())
               .subscribe((result) => {
+                console.log("Se creo el Proyecto" + body);
                 observer.next(result);
                 observer.complete();
               });
       });
   }
 
-  getAll(): Observable<Proyecto[]> {
+  getAll(): Observable<Project[]> {
     console.log(' *** ProyectoService.getAll() *** ');
     console.log('Se solicitan proyectos. - Url: ' + this.getAllEndpoint);
     return Observable.create(observer => {
@@ -49,7 +51,7 @@ export class ProyectoService {
     });
   }
 
-  getById(id:string) : Observable<Proyecto> {
+  getById(id:string) : Observable<Project> {
     console.log(' *** ProyectoService.getById() *** ');
 
     console.log('Se solicita proyecto id:' + id + '. - Url: ' + this.getByIdEndpoint);
@@ -64,7 +66,7 @@ export class ProyectoService {
     });
   }
 
-  delete(id:string) : Observable<Proyecto> {
+  delete(id:string) : Observable<Project> {
     console.log(' *** ProyectoService.delete() *** ');
     console.log('Se borra proyecto id:' + id + '. - Url: ' + this.deleteEndpoint);
     let idFilter = this.deleteEndpoint + '/' + id;
@@ -78,7 +80,7 @@ export class ProyectoService {
     });
   }
 
-  update(id:string, proyecto:Proyecto) : Observable<Proyecto> {
+  update(id:string, proyecto:Project) : Observable<Project> {
     console.log(' *** ProyectoService.update() *** ');
 
     let headers = new Headers({ 'Content-Type': 'application/json' });

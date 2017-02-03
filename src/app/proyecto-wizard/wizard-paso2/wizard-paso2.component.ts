@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProjectDetail } from '../../model/project-detail';
 
 @Component({
   selector: 'app-wizard-paso2',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WizardPaso2Component implements OnInit {
 
   @Input() proyectoId;
+  @Input() projectDetail: ProjectDetail;
+
 
   constructor() { }
 

@@ -3,8 +3,8 @@ import { SeguridadComponent } from '../shared/seguridad.component';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
 import { ProyectoService } from '../services/proyecto.service'
-import { Lider } from '../model/lider'
-import { Proyecto } from '../model/proyecto'
+import { Leader } from '../model/leader'
+import { Project } from '../model/project'
 
 @Component({
   selector: 'app-nuevo-proyecto',
@@ -54,13 +54,13 @@ export class NuevoProyectoComponent extends SeguridadComponent implements OnInit
     let type = this.isSolutionsProject ? 'soluciones' : 'operaciones';
     if( this.isProjectLeader ) {
       let user = this.loggedUser();
-      leader = new Lider(user.userName, user.userMail);
+      leader = new Leader(user.userName, user.userMail);
     } else {
       let name = this.leaderFirstname + " " + this.leaderSurname;
-      leader = new Lider(name, this.leaderEmail);
+      leader = new Leader(name, this.leaderEmail);
       //TODO enviar petición para registrarse en la aplicación.
     }
-    let proyecto = new Proyecto(this.projectName, this.projectCode, type , leader);
+    let proyecto = new Project(this.projectName, this.projectCode, type , leader);
     this._proyectoService.create(proyecto).subscribe(r => console.log(r));
   }
 

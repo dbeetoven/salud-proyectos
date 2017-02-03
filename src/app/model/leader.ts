@@ -1,4 +1,4 @@
-export class Lider {
+export class Leader {
 
 	private mail: string;
 	private name: string;
@@ -15,6 +15,6 @@ export class Lider {
 		return this.mail;
 	}
 	toString(): string {
-		return "Name: " + this.name + " Mail: " + this.mail; 
+		return "Name: " + this.name + " Mail: " + this.mail;
 	}
 }

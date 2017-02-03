@@ -1,16 +1,16 @@
-import { Lider } from './lider';
+import { Leader } from './leader';
 
-export class Proyecto {
+export class Project {
 	private name: string;
 	private code: string;
 	private type: string;
-	private leader: Lider;
+	private leader: Leader;
 
-	constructor(nombre: string, codigo:string, tipo:string , lider:Lider) {
-		this.name = nombre;
-		this.code = codigo;
-		this.type = tipo;
-		this.leader = lider;
+	constructor(name: string, code:string, type:string , leader:Leader) {
+		this.name = name;
+		this.code = code;
+		this.type = type;
+		this.leader = leader;
 	}
 
 	getNombre(): string {
@@ -22,7 +22,7 @@ export class Proyecto {
 	getTipo(): string {
 		return this.type;
 	}
-	getLider(): Lider {
+	getLider(): Leader {
 		return this.leader;
 	}
 

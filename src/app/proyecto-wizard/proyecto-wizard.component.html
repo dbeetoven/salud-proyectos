@@ -7,13 +7,13 @@
     <div><button md-mini-fab disabled>1</button>-Datos iniciales</div>
     <div><button md-mini-fab disabled>2</button>-Datos del equipo</div>
     <div><button md-mini-fab disabled>3</button>-Carga inicial</div>
-    <div><button md-mini-fab disabled>4</button>-Resumen</div>
+    <div><button md-mini-fab disabled>4</button>-Confirmar</div>
   </div>
 
-  <app-wizard-paso1 [proyectoId]='id' [ngClass]="paso1"></app-wizard-paso1>
-  <app-wizard-paso2 [proyectoId]='id' [ngClass]="paso2"></app-wizard-paso2>
-  <app-wizard-paso3 [proyectoId]='id' [ngClass]="paso3"></app-wizard-paso3>
-  <app-wizard-resumen [proyectoId]='id' [ngClass]="resumen"></app-wizard-resumen>
+  <app-wizard-paso1 [proyectoId]='id' [projectDetail]='projectDetail' [ngClass]="paso1"></app-wizard-paso1>
+  <app-wizard-paso2 [proyectoId]='id' [projectDetail]='projectDetail' [ngClass]="paso2"></app-wizard-paso2>
+  <app-wizard-paso3 [proyectoId]='id' [projectDetail]='projectDetail' [ngClass]="paso3"></app-wizard-paso3>
+  <app-wizard-resumen [proyectoId]='id' [projectDetail]='projectDetail' [ngClass]="resumen"></app-wizard-resumen>
 
   <div class="row">
     <div><button md-raised-button color="warn" (click)="back()">Atras</button></div>

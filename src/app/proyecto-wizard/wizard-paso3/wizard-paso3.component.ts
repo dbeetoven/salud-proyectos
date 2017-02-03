@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProjectDetail } from '../../model/project-detail';
 
 @Component({
   selector: 'app-wizard-paso3',
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WizardPaso3Component implements OnInit {
 
   @Input() proyectoId;
+  @Input() projectDetail: ProjectDetail;
 
   private dateIssue = 'hide';
   private dateIssueInput;
