@@ -1,8 +1,8 @@
 export class Risk {
-  private description: string;
-  private action: string;
-  private expirationDate: Date;
-  private gdm: string;
+  public description: string;
+  public action: string;
+  public expirationDate: Date;
+  public gdm: string;
 
   constructor(description: string, action: string, expirationDate: Date, gdm: string) {
     this.description = description;
@@ -10,4 +10,18 @@ export class Risk {
     this.expirationDate = expirationDate;
     this.gdm = gdm;
   }
+/*
+  getDescription(): string {
+    return this.description;
+  }
+  getAction(): string {
+    return this.action;
+  }
+  getExpirationDate(): Date {
+    return this.expirationDate;
+  }
+  getGDM(): string {
+    return this.gdm;
+  }
+*/
 }

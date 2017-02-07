@@ -1,13 +1,13 @@
 <div>
     <div class="row">
       <h1>Contanos un poco de {{proyectoId}}!</h1>
-    </div>  
-    
+    </div>
+
     <div class="rowLeft">
       1)Quien es el Lider del lado del cliente?
     </div>
     <div class="rowLeft">
-      <div class="input"><md-input placeholder="Nombre y Apellido" class="input"></md-input></div>
+      <div class="input"><md-input placeholder="Nombre y Apellido" [(ngModel)]="clientNameInput" class="input"></md-input></div>
     </div>
 
     <div class="rowLeft">
@@ -25,15 +25,15 @@
     <div class="rowLeft">
       3)Como es la relacion con el cliente?
     </div>
-    <div class="rowLeft"> 
-      <md-button-toggle-group name="status">
-        <md-button-toggle value="bien" (color)="warn">
+    <div class="rowLeft">
+      <md-button-toggle-group name="status" [(ngModel)]="clientRelation">
+        <md-button-toggle value="1" (color)="warn">
           <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-heart_eyes"></md-icon>
         </md-button-toggle>
-        <md-button-toggle value="bien" (color)="warn">
+        <md-button-toggle value="0" (color)="warn">
           <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-confused"></md-icon>
         </md-button-toggle>
-        <md-button-toggle value="bien" (color)="warn">
+        <md-button-toggle value="-1" (color)="warn">
           <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-fire"></md-icon>
         </md-button-toggle>
       </md-button-toggle-group>

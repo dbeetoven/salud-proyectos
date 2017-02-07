@@ -1,7 +1,42 @@
-<p>
-  Project Name: {{projectDetail.getName()}}
+<div>
+  <br/><br/>
+  Project Name: {{projectDetail.name}}
+  <br/><br/>
+  Project Date From: {{projectDetail.dateFrom}}
+  <br/><br/>
+  Project Date To: {{projectDetail.dateTo}}
+  <br/><br/>
+  Client Name: {{projectDetail.clientLeaderName}}
+  <br/><br/>
+  Project Client Relation: {{projectDetail.clientRelation}}
+  <br/><br/>
+  Applications:
+  <ul>
+    <li *ngFor="let app of projectDetail.applications">
+      Name: {{app.name}} ~~ Tech: {{app.technologies}}
+    </li>
+  </ul>
   <br>
-  Project Date From: {{projectDetail.getDateFrom()}}
-  <br>
-  Project Date To: {{projectDetail.getDateTo()}}
-</p>
+  Assigned People: {{projectDetail.assignedPeopleCount}}
+  <br/><br/>
+  Not Assigned People: {{projectDetail.notAssignedPeopleCount}}
+  <br/><br/>
+  Average Rotation: {{projectDetail.averageRotation}}
+  <br/><br/>
+  Team Mood: {{projectDetail.teamMood}}
+  <br/><br/>
+  Activities:
+  <ul>
+    <li *ngFor="let act of projectDetail.activities">
+      Description: {{act.description}}
+    </li>
+  </ul>
+  <br/>
+  Risks:
+  <ul>
+    <li *ngFor="let risk of projectDetail.risks">
+      Description: {{risk.description}} ~~ Action: {{risk.action}} <br/>
+      Expire Date: {{risk.expirationDate}} ~~ GDM: {{risk.gdm}}
+    </li>
+  </ul>
+</div>

@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProjectDetail } from '../../model/project-detail';
+import { Activity } from '../../model/activity';
+import { Risk } from '../../model/risk';
+
+
 
 @Component({
   selector: 'app-wizard-paso3',
@@ -50,4 +54,19 @@ export class WizardPaso3Component implements OnInit {
     this.gdmIssue = '';
   }
 
+  //callbackfn: (value: String, index: number, array: String[]) => void, thisArg?: anyfunction(actividad)
+  populateProjectWithStepDetails(){
+    let activities: Activity[] = [];
+    this.actividades.forEach(function(actividad: string) {
+        activities.push( new Activity(actividad, new Date()) );
+    });
+    this.projectDetail.activities = activities;
+
+    var risks: Risk[] = [];
+    this.issues.forEach(function(riesgo) {
+        let fecha = new Date( Date.parse( riesgo.fecha) );
+        risks.push( new Risk(riesgo.descripcion, riesgo.accion, fecha, riesgo.gdm) );
+    });
+    this.projectDetail.risks = risks;
+  }
 }

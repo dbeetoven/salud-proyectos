@@ -6,19 +6,19 @@ import { ClientRelation } from './enums/client-relation.enum';
 import { TeamMood } from './enums/team-mood.enum';
 
 export class ProjectDetail {
-  private name: string;
+  public name: string;
   //datos del modelo proyecto
-  private dateFrom: Date;
-  private dateTo: Date;
-  private applications: Application[];
-  private leader: Leader;
-  private clientRelation : ClientRelation;
-  private assignedPeopleCount: number;
-  private notAssignedPeopleCount: number;
-  private averageRotation: number;
-  private teamMood: TeamMood;
-  private activities: Activity[];
-  private risks: Risk[];
+  public dateFrom: Date;
+  public dateTo: Date;
+  public applications: Application[];
+  public clientLeaderName: string;
+  public clientRelation : ClientRelation;
+  public assignedPeopleCount: number;
+  public notAssignedPeopleCount: number;
+  public averageRotation: number;
+  public teamMood: TeamMood;
+  public activities: Activity[];
+  public risks: Risk[];
 
   constructor(){};
 /*
@@ -39,6 +39,7 @@ export class ProjectDetail {
     this.risks = risks;
   }
 */
+/*
   getName(): string {
     return this.name;
   }
@@ -51,8 +52,8 @@ export class ProjectDetail {
   getApplications(): Application[] {
     return this.applications;
   }
-  getLeader(): Leader {
-    return this.leader;
+  getClientLeader(): string {
+    return this.clientLeader;
   }
   getClientRelation(): ClientRelation {
     return this.clientRelation;
@@ -88,8 +89,8 @@ export class ProjectDetail {
   setApplications(applications: Application[]) {
     this.applications = applications;
   }
-  setLeader(leader: Leader) {
-    this.leader = leader;
+  setClientLeader(clientLeader: string) {
+    this.clientLeader = clientLeader;
   }
   setClientRelation(clientRelation: ClientRelation) {
     this.clientRelation = clientRelation;
@@ -112,4 +113,5 @@ export class ProjectDetail {
   setRisks(risks: Risk[]) {
     this.risks = risks;
   }
+*/
 }

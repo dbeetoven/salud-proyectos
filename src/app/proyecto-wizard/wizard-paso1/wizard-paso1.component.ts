@@ -1,7 +1,8 @@
 import { ProyectoWizardComponent } from '../proyecto-wizard.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProjectDetail } from '../../model/project-detail'
-import { Application } from '../../model/application'
+import { ProjectDetail } from '../../model/project-detail';
+import { Application } from '../../model/application';
+import { ClientRelation } from '../../model/enums/client-relation.enum';
 
 
 @Component({
@@ -16,6 +17,12 @@ export class WizardPaso1Component implements OnInit {
   //@Output() next = new EventEmitter();
 
   private datosBasicos;
+
+  //input nombre lider cliente
+  private clientNameInput: string;
+
+  //select relacien con cliente
+  private clientRelation: number;
 
   // input fecha desde
   private dateFromInput: string;
@@ -42,19 +49,19 @@ export class WizardPaso1Component implements OnInit {
 
   setToDateValue(date: Date) {
     this.dateToInput = date.toLocaleString().split(',')[0];
-    this.projectDetail.setDateFrom( date );
+    console.log(">>>>>" + this.dateToInput)
   }
 
   setFromDateValue(date: Date) {
     this.dateFromInput = date.toLocaleString().split(',')[0];
-    this.projectDetail.setDateTo( date );
+    console.log(">>>>>" + this.dateFromInput)
   }
 
   // Manejo del campo de app y tecnologias
   addApp(tecs) {
     let app = { nombre: this.appNombreInput, tecnologias: tecs.tecs.reduce((a, b) => a + ',' + b) };
     tecs.clrTecs();
-    this.appNombreInput = '';
+    //this.appNombreInput = '';
     this.apps.push(app);
   }
 
@@ -62,16 +69,26 @@ export class WizardPaso1Component implements OnInit {
     this.apps = this.apps.filter(a => a.nombre !== appname);
   }
 
+
   populateProjectWithStepDetails(){
-    console.log( this.dateFromInput );
-    this.projectDetail.setDateFrom( new Date( Date.parse(this.dateFromInput) ) );
-    console.log( this.dateToInput );
-    this.projectDetail.setDateTo( new Date( Date.parse(this.dateToInput) ) );
-/*
-    this.apps.forEach(function(){
-      let application : Application;
-      application = new Application("", [""]);
+    this.projectDetail.clientLeaderName = this.clientNameInput;
+    this.projectDetail.dateFrom = new Date( Date.parse(this.dateFromInput) ) ;
+    console.log(">>>>>" + this.dateToInput)
+    this.projectDetail.dateTo = new Date( Date.parse(this.dateToInput) ) ;
+    console.log(">>>>>" + this.projectDetail.dateTo)
+    this.projectDetail.clientRelation = this.clientRelation;
+    /*
+    if ( this.clientRelation == 0 ) {
+        this.projectDetail.clientRelation = ClientRelation.NICE;
+    } else if ( this.clientRelation == 1 ) {
+      this.projectDetail.clientRelation = ClientRelation.VERY_GOOD;
+    } else if ( this.clientRelation == -1 ) {
+      this.projectDetail.clientRelation = ClientRelation.VERY_BAD;
+    }*/
+    let applications: Application[] = [];
+    this.apps.forEach(function(app) {
+        applications.push( new Application(app.nombre, app.tecnologias) );
     });
-*/
+    this.projectDetail.applications = applications;
   }
 }

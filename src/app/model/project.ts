@@ -1,10 +1,10 @@
 import { Leader } from './leader';
 
 export class Project {
-	private name: string;
-	private code: string;
-	private type: string;
-	private leader: Leader;
+	public name: string;
+	public code: string;
+	public type: string;
+	public leader: Leader;
 
 	constructor(name: string, code:string, type:string , leader:Leader) {
 		this.name = name;

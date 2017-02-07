@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MdIconRegistry } from '@angular/material';
 import { ProjectDetail } from '../model/project-detail';
+import { WizardPaso1Component } from './wizard-paso1/wizard-paso1.component';
+import { WizardPaso2Component } from './wizard-paso2/wizard-paso2.component';
+import { WizardPaso3Component } from './wizard-paso3/wizard-paso3.component';
 
 @Component({
   selector: 'app-proyecto-wizard',
@@ -10,6 +13,13 @@ import { ProjectDetail } from '../model/project-detail';
   viewProviders: [MdIconRegistry],
 })
 export class ProyectoWizardComponent implements OnInit {
+  @ViewChild(WizardPaso1Component)
+  private paso1Component: WizardPaso1Component;
+  @ViewChild(WizardPaso2Component)
+  private paso2Component: WizardPaso2Component;
+  @ViewChild(WizardPaso3Component)
+  private paso3Component: WizardPaso3Component;
+
   private id: string;
   private sub: any;
   private projectDetail: ProjectDetail;
@@ -32,7 +42,7 @@ export class ProyectoWizardComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.projectDetail.setName( this.id );
+      this.projectDetail.name = this.id;
     });
   }
 
@@ -73,20 +83,24 @@ export class ProyectoWizardComponent implements OnInit {
         this.paso2 = 'show';
         this.paso3 = 'hide';
         this.resumen = 'hide';
+        this.paso1Component.populateProjectWithStepDetails();
         break;
       case 2:
         this.paso1 = 'hide';
         this.paso2 = 'hide';
         this.paso3 = 'show';
         this.resumen = 'hide';
+        this.paso2Component.populateProjectWithStepDetails();
         break;
       case 3:
         this.paso1 = 'hide';
         this.paso2 = 'hide';
         this.paso3 = 'hide';
         this.resumen = 'show';
+        this.paso3Component.populateProjectWithStepDetails();
         break;
     }
+
   }
 
   back() {

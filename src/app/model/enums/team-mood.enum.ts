@@ -1,10 +1,10 @@
 export enum TeamMood {
-  VERY_GOOD = 1,
-  NICE = 0,
-  VERY_BAD = -1,
-  OTRA4,
-  OTRA5,
-  OTRA6,
-  OTRA7,
-  OTRA8
+  VERY_GOOD = 4,
+  GOOD = 3,
+  NICE = 2,
+  NORMAL = 1,
+  NOT_BAD = 0,
+  BAD = -1,
+  VERY_BAD = -2,
+  ON_FIRE = -3
 }
