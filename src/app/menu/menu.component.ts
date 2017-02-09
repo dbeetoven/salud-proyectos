@@ -2,19 +2,22 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { SeguridadComponent } from '../shared/seguridad.component';
 import { Router } from '@angular/router';
 import { AngularFire } from 'angularfire2';
+import { ProyectoService } from '../services/proyecto.service'
+import { Project } from '../model/project';
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
-  providers: [SeguridadComponent],
+  providers: [SeguridadComponent, ProyectoService],
 })
 export class MenuComponent extends SeguridadComponent implements OnInit {
 
-  private proys;
+  private proys: Project[];
   private proysSource;
   private colNumber: number = 5;
-  constructor(public router: Router, public af: AngularFire) {
+  constructor(public router: Router, public af: AngularFire, private _proyectoService: ProyectoService) {
     super(router, af);
     if (window.innerWidth >= 1200) {
       this.colNumber = 5;
@@ -45,7 +48,8 @@ export class MenuComponent extends SeguridadComponent implements OnInit {
       { title: 'QOSDE03', estado: 'bien', tipo: 'soluciones' },
       { title: 'QOSDE08', estado: 'regular', tipo: 'soluciones' }
     ];
-    this.proys = this.proysSource;
+    //this.proys = this.proysSource;
+    this._proyectoService.getAll().subscribe(r => this.proys = r);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -63,6 +67,8 @@ export class MenuComponent extends SeguridadComponent implements OnInit {
     }
   }
 
+//TODO refactor del filtro, todo a partir del modelo.
+/*
   filtrar(filtro) {
     this.proys = this.proysSource.filter(proy => {
       if (filtro.estado === '') {
@@ -75,9 +81,9 @@ export class MenuComponent extends SeguridadComponent implements OnInit {
       if (filtro.tipo === '') {
         return true;
       } else {
-        return filtro.tipo === proy.tipo;
+        return filtro.tipo === proy.getType;
       }
     });
   }
-
+*/
 }

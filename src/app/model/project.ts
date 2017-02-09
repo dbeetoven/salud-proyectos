@@ -5,6 +5,7 @@ export class Project {
 	public code: string;
 	public type: string;
 	public leader: Leader;
+	public _id: number;
 
 	constructor(name: string, code:string, type:string , leader:Leader) {
 		this.name = name;
