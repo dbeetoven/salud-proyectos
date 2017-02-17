@@ -29,6 +29,7 @@ import { WizardPaso1Component } from './proyecto-wizard/wizard-paso1/wizard-paso
 import { WizardPaso2Component } from './proyecto-wizard/wizard-paso2/wizard-paso2.component';
 import { WizardPaso3Component } from './proyecto-wizard/wizard-paso3/wizard-paso3.component';
 import { WizardResumenComponent } from './proyecto-wizard/wizard-resumen/wizard-resumen.component';
+import { ResumenComponent } from './resumen/resumen.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { WizardResumenComponent } from './proyecto-wizard/wizard-resumen/wizard-
     WizardPaso2Component,
     WizardPaso3Component,
     WizardResumenComponent,
+    ResumenComponent,
   ],
   imports: [
     BrowserModule,

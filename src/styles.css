@@ -1,4 +1,8 @@
 .blueBackground{
-	background-color: #ebebeb;
+	background-color: rgb(131, 140, 145);
 	margin: 0px;
+}
+
+md-card{
+	background:  #ebebeb
 }
