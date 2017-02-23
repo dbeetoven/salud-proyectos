@@ -3,12 +3,15 @@
     <md-card>
       <md-card-content >
         <div class="row">
-          <md-input placeholder="Codigo del Proyecto" value="QOSDE14"></md-input>
-          <md-input placeholder="Cliente" value="Daniel Sabio"></md-input>
+          <md-input placeholder="Codigo del Proyecto" [(ngModel)]="proyectoId" disabled></md-input>
+          <md-input placeholder="Cliente" [(ngModel)]="resumen.clientLeaderName" disabled></md-input>
         </div>
         <div class="row">
-          <md-input placeholder="Lider/SM/Facilitador" value="Nicolas Rameri"></md-input>
-          <md-input placeholder="Fecha del Inicio/Fin" value="10/10/2015->10/10/2016"></md-input>
+          <md-input placeholder="Lider/SM/Facilitador" disabled style="width: 100%"></md-input>
+        </div>
+        <div class="row">
+          <md-input placeholder="Fecha del Inicio" [ngModel]="resumen.dateFrom | date: 'dd/MM/yyyy'" disabled></md-input>
+          <md-input placeholder="Fecha del Fin" [ngModel]="resumen.dateTo | date: 'dd/MM/yyyy'" disabled></md-input>
         </div>
       </md-card-content>
     </md-card>
@@ -16,7 +19,11 @@
       <md-card-content> 
         <div class="rowLeft">
           <h4>Estado del cliente:</h4>
-          <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-heart_eyes" style="height: inherit;"></md-icon>
+          <span [ngSwitch]="resumen.clientRelation">
+            <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-heart_eyes" style="height: inherit;" *ngSwitchCase="'1'"></md-icon>
+            <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-heart_eyes" style="height: inherit;" *ngSwitchCase="'0'"></md-icon>
+            <md-icon fontSet="emoji" class="fa-2x" fontIcon="em-heart_eyes" style="height: inherit;" *ngSwitchCase="'-1'"></md-icon>
+          </span>
         </div>
         <div class="rowLeft">
           <h4>Estado del Colaboradores:</h4>
@@ -29,7 +36,70 @@
   <div class="row">
     <md-card>
       <md-card-title>Aplicaciones</md-card-title>
-      <md-card-content>content</md-card-content>
+      <md-card-content>
+
+        <md-list class="input">
+          <md-divider></md-divider>
+          <span  *ngFor="let app of resumen.applications">
+            <md-list-item>
+              <h3 md-line> {{app.name}} </h3>
+              <p md-line> {{app.technologies}} </p>
+            </md-list-item>
+            <md-divider></md-divider>
+          </span>
+        </md-list>
+
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div class="row">
+    <md-card>
+      <md-card-title>Equipo</md-card-title>
+      <md-card-content>
+        <div class="row">
+          <md-input placeholder="Colaboradores" [(ngModel)]="resumen.assignedPeopleCount" disabled></md-input>
+          <md-input placeholder="Contratados" [(ngModel)]="resumen.notAssignedPeopleCount" disabled></md-input>
+          <md-input placeholder="Rotacion" [(ngModel)]="resumen.averageRotation" disabled ></md-input>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div class="row">
+    <md-card>
+      <md-card-title>Actividad de la semana</md-card-title>
+      <md-card-content>
+
+        <md-list class="input">
+          <md-divider></md-divider>
+          <span  *ngFor="let actividad of resumen.activities">
+            <md-list-item>
+              <p md-line> {{actividad.description}} </p>
+            </md-list-item>
+            <md-divider></md-divider>
+          </span>
+        </md-list>
+
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div class="row">
+    <md-card>
+      <md-card-title>Riesgos</md-card-title>
+      <md-card-content>
+
+        <md-list>
+          <md-list-item *ngFor="let issue of resumen.risks">
+            {{issue.gdm}}-
+            {{issue.description}}-
+            {{issue.action}}-
+            {{issue.expirationDate | date: 'dd/MM/yyyy'}}
+          </md-list-item>
+        </md-list>
+
+      </md-card-content>
     </md-card>
   </div>
   
