@@ -29,6 +29,7 @@ export class ProyectoWizardComponent implements OnInit {
   private paso3: string;
   private resumen: string;
   private progress: number = 0;
+  siguiente = "siguiente"
 
   constructor(private route: ActivatedRoute, mdIconRegistry: MdIconRegistry) {
     mdIconRegistry.registerFontClassAlias('emoji', 'em');
@@ -79,6 +80,7 @@ export class ProyectoWizardComponent implements OnInit {
     console.log('paso');
     switch (this.progress) {
       case 1:
+        this.siguiente = "Siguiente";
         this.paso1 = 'hide';
         this.paso2 = 'show';
         this.paso3 = 'hide';
@@ -86,6 +88,7 @@ export class ProyectoWizardComponent implements OnInit {
         this.paso1Component.populateProjectWithStepDetails();
         break;
       case 2:
+        this.siguiente = "Siguiente";
         this.paso1 = 'hide';
         this.paso2 = 'hide';
         this.paso3 = 'show';
@@ -93,6 +96,7 @@ export class ProyectoWizardComponent implements OnInit {
         this.paso2Component.populateProjectWithStepDetails();
         break;
       case 3:
+        this.siguiente = "Confirmar";
         this.paso1 = 'hide';
         this.paso2 = 'hide';
         this.paso3 = 'hide';
@@ -108,18 +112,21 @@ export class ProyectoWizardComponent implements OnInit {
     console.log('paso');
     switch (this.progress) {
       case 0:
+        this.siguiente = "Siguiente";
         this.paso1 = 'show';
         this.paso2 = 'hide';
         this.paso3 = 'hide';
         this.resumen = 'hide';
         break;
       case 1:
+        this.siguiente = "Siguiente";
         this.paso1 = 'hide';
         this.paso2 = 'show';
         this.paso3 = 'hide';
         this.resumen = 'hide';
         break;
       case 2:
+        this.siguiente = "Siguiente";
         this.paso1 = 'hide';
         this.paso2 = 'hide';
         this.paso3 = 'show';
