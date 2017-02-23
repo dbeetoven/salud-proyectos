@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { MdIconRegistry } from '@angular/material';
 import { ProjectDetail } from '../model/project-detail';
 import { WizardPaso1Component } from './wizard-paso1/wizard-paso1.component';
 import { WizardPaso2Component } from './wizard-paso2/wizard-paso2.component';
 import { WizardPaso3Component } from './wizard-paso3/wizard-paso3.component';
+import { ProjectDetailService  } from '../services/project-detail.service'
+
 
 @Component({
   selector: 'app-proyecto-wizard',
   templateUrl: './proyecto-wizard.component.html',
   styleUrls: ['./proyecto-wizard.component.css'],
-  viewProviders: [MdIconRegistry],
+  viewProviders: [MdIconRegistry,ProjectDetailService],
 })
 export class ProyectoWizardComponent implements OnInit {
   @ViewChild(WizardPaso1Component)
@@ -31,7 +33,10 @@ export class ProyectoWizardComponent implements OnInit {
   private progress: number = 0;
   siguiente = "siguiente"
 
-  constructor(private route: ActivatedRoute, mdIconRegistry: MdIconRegistry) {
+  constructor(private activatedRoute: ActivatedRoute,
+   mdIconRegistry: MdIconRegistry,
+   private detailSerice:ProjectDetailService,
+   private route:Router) {
     mdIconRegistry.registerFontClassAlias('emoji', 'em');
     this.paso1 = 'show';
     this.paso2 = 'hide';
@@ -41,7 +46,7 @@ export class ProyectoWizardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       this.projectDetail.code = this.id;
     });
@@ -133,5 +138,9 @@ export class ProyectoWizardComponent implements OnInit {
         this.resumen = 'hide';
         break;
     }
+  }
+
+  save(){
+    this.detailSerice.create(this.projectDetail).subscribe(r=> this.route.navigate(['/proyecto', this.id ]));
   }
 }
