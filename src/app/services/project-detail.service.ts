@@ -65,7 +65,7 @@ export class ProjectDetailService {
   }
 
   //Quizá cambiarlo a getByCode ->  agregar code en el modelo. Sii el code es unívoco.
-  getByName(name:string) : Observable<ProjectDetail> {
+  getByName(name:string) : Observable<ProjectDetail[]> {
     console.log(' *** ProjectDetailService.getByName() *** ');
 
     console.log('Se solicita detalle de proyecto name:' + name + '. - Url: ' + this.getByNameEndpoint);
