@@ -51,11 +51,11 @@ export class ProyectoService {
     });
   }
 
-  getById(id:string) : Observable<Project> {
+  getById(code:string) : Observable<Project> {
     console.log(' *** ProyectoService.getById() *** ');
 
-    console.log('Se solicita proyecto id:' + id + '. - Url: ' + this.getByIdEndpoint);
-    let idFilter = this.getByIdEndpoint + '/' + id;
+    console.log('Se solicita proyecto id:' + code + '. - Url: ' + this.getByIdEndpoint);
+    let idFilter = this.getByIdEndpoint + '/' + code;
     return Observable.create(observer => {
         this.http.get(idFilter)
             .map((res: Response) => res.json())
