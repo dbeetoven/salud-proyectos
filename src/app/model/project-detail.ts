@@ -6,7 +6,7 @@ import { ClientRelation } from './enums/client-relation.enum';
 import { TeamMood } from './enums/team-mood.enum';
 
 export class ProjectDetail {
-  public name: string;
+  public code: string;
   //datos del modelo proyecto
   public dateFrom: Date;
   public dateTo: Date;

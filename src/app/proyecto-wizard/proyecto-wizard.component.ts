@@ -43,7 +43,7 @@ export class ProyectoWizardComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.projectDetail.name = this.id;
+      this.projectDetail.code = this.id;
     });
   }
 
