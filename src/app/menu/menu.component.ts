@@ -15,6 +15,7 @@ import { Project } from '../model/project';
 export class MenuComponent extends SeguridadComponent implements OnInit {
 
   private proys: Project[];
+  private proysView: Project[];
   private proysSource;
   private colNumber: number = 5;
   constructor(public router: Router, public af: AngularFire, private _proyectoService: ProyectoService) {
@@ -33,23 +34,8 @@ export class MenuComponent extends SeguridadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.proysSource = [
-      { title: 'PNOCH01', estado: 'bien', tipo: 'soluciones' },
-      { title: 'QOSDE05', estado: 'regular', tipo: 'soluciones' },
-      { title: 'QOSDE11', estado: 'mal', tipo: 'soluciones' },
-      { title: 'QOSDE03', estado: 'bien', tipo: 'operaciones' },
-      { title: 'PNOCH01', estado: 'mal', tipo: 'soluciones' },
-      { title: 'QOSDE05', estado: 'bien', tipo: 'soluciones' },
-      { title: 'QOSDE11', estado: 'regular', tipo: 'operaciones' },
-      { title: 'QOSDE03', estado: 'regular', tipo: 'soluciones' },
-      { title: 'PNOCH01', estado: 'bien', tipo: 'soluciones' },
-      { title: 'QOSDE05', estado: 'regular', tipo: 'soluciones' },
-      { title: 'QOSDE11', estado: 'bien', tipo: 'operaciones' },
-      { title: 'QOSDE03', estado: 'bien', tipo: 'soluciones' },
-      { title: 'QOSDE08', estado: 'regular', tipo: 'soluciones' }
-    ];
     //this.proys = this.proysSource;
-    this._proyectoService.getAll().subscribe(r => this.proys = r);
+    this._proyectoService.getAll().subscribe(r => this.proysView=this.proys = r);
   }
 
   @HostListener('window:resize', ['$event'])
@@ -68,22 +54,23 @@ export class MenuComponent extends SeguridadComponent implements OnInit {
   }
 
 //TODO refactor del filtro, todo a partir del modelo.
-/*
+
   filtrar(filtro) {
-    this.proys = this.proysSource.filter(proy => {
+    console.log(filtro);
+  /*  this.proysview = this.proys.filter(proy => {
       if (filtro.estado === '') {
         return true;
       } else {
-        return filtro.estado === proy.estado;
+        return filtro.estado === proy.;
       }
-    });
-    this.proys = this.proys.filter(proy => {
+    });*/
+    this.proysView = this.proys.filter(proy => {
       if (filtro.tipo === '') {
         return true;
       } else {
-        return filtro.tipo === proy.getType;
+        return filtro.tipo === proy.type;
       }
     });
   }
-*/
+
 }

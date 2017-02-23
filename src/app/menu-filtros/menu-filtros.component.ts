@@ -27,6 +27,7 @@ export class MenuFiltrosComponent implements OnInit {
   }
 
   toogleFilters() {
+    console.log("filtros")
     if (this.tipo === 'hidden') {
       this.tipo = 'showTipo';
       this.estado = 'showEstado';
@@ -39,6 +40,7 @@ export class MenuFiltrosComponent implements OnInit {
   }
 
   toogleTipo() {
+    console.log("tipos")
     if (this.tipoIcono === 'settings') {
       this.tipoIcono = 'bug_report';
       this.filtros.tipo = 'operaciones';
@@ -53,6 +55,7 @@ export class MenuFiltrosComponent implements OnInit {
   }
 
   toogleEstado() {
+    console.log("estado")
     if (this.estadoColor === 'gris') {
       this.estadoColor = 'verde';
       this.filtros.estado = 'bien';
