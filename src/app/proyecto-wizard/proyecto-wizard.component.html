@@ -16,8 +16,9 @@
   <app-wizard-resumen [proyectoId]='id' [projectDetail]='projectDetail' [ngClass]="resumen"></app-wizard-resumen>
 
   <div class="row">
-    <div><button md-raised-button color="warn" (click)="back()">Atras</button></div>
-    <div><button md-raised-button color="primary" (click)="next()">{{siguiente}}</button></div>
+    <div *ngIf="progress>0"><button md-raised-button color="warn" (click)="back()" >Atras</button></div>
+    <div *ngIf="progress<3"><button md-raised-button color="primary" (click)="next()" >Siguiente</button></div>
+    <div *ngIf="progress==3"><button md-raised-button color="primary" (click)="save()" >Confirmar</button></div>
   </div>
 
 </md-card>
