@@ -13,7 +13,7 @@ export class ProjectDetailService {
   private getByIdEndpoint = this.backendUrl + '/proyectoDetalle/getById';
   private deleteEndpoint = this.backendUrl + '/proyectoDetalle/delete';
   private updateEndpoint = this.backendUrl + '/proyectoDetalle/update';
-  private getByNameEndpoint = this.backendUrl + '/proyectoDetalle/getByName';
+  private getByCodeEndpoint = this.backendUrl + '/proyectoDetalle/getByCode';
 
   constructor(private http:Http) { }
 
@@ -65,11 +65,11 @@ export class ProjectDetailService {
   }
 
   //Quizá cambiarlo a getByCode ->  agregar code en el modelo. Sii el code es unívoco.
-  getByName(name:string) : Observable<ProjectDetail[]> {
+  getByName(code:string) : Observable<ProjectDetail[]> {
     console.log(' *** ProjectDetailService.getByName() *** ');
 
-    console.log('Se solicita detalle de proyecto name:' + name + '. - Url: ' + this.getByNameEndpoint);
-    let idFilter = this.getByNameEndpoint + '/' + name;
+    console.log('Se solicita detalle de proyecto name:' + code + '. - Url: ' + this.getByCodeEndpoint);
+    let idFilter = this.getByCodeEndpoint + '/' + code;
     return Observable.create(observer => {
         this.http.get(idFilter)
             .map((res: Response) => res.json())
